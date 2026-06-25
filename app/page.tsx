@@ -12,7 +12,6 @@ import HistorySection from '../components/HistorySection';
 import LoginSection from '../components/LoginSection';
 
 // Prevent Vercel type compilation mismatches/caching issues
-const LoginSectionSafe = LoginSection as any;
 import AdminDashboard from '../components/AdminDashboard';
 import MobileNavigation from '../components/MobileNavigation';
 import AboutUsVoucher, { Voucher } from '../components/AboutUsVoucher';
