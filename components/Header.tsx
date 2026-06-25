@@ -51,7 +51,7 @@ export default function Header({
           </div>
           <div>
             <h1 className="font-display font-black text-xl tracking-tight uppercase italic text-orange-500">
-              Jeda<span className="text-white">Kuliah</span>
+              Kroket<span className="text-white">Grape & Yakult</span>
             </h1>
             <div className="flex items-center gap-1.5 mt-0.5">
               <span className={`w-2 h-2 rounded-full ${isPhpActive ? 'bg-emerald-500 animate-pulse' : 'bg-cyan-500'}`} />

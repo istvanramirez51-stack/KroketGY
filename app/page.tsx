@@ -365,7 +365,7 @@ export default function Page() {
 
           <div className="hidden sm:flex items-center gap-2 text-[10px] font-mono uppercase text-zinc-550 font-bold pr-2 select-none">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-            <span>Kantin Jeda Kuliah</span>
+            <span>Kantin kroket</span>
           </div>
         </div>
         
@@ -418,7 +418,7 @@ export default function Page() {
                 >
                   <div className="border-4 border-black p-5 rounded-2xl bg-gradient-to-r from-zinc-900 to-black text-white shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                     <div>
-                      <h2 className="font-display font-black text-2xl uppercase tracking-tight">🏆 3 Menu Utama Mahkota Kampus</h2>
+                      <h2 className="font-display font-black text-2xl uppercase tracking-tight">🏆 3 Menu Utama kami</h2>
                       <p className="font-mono text-[10px] text-zinc-400 uppercase tracking-wider mt-0.5">Resep legendaris terfavorit pilihan mahasiswa, dijamin lezat, mengenyangkan, dan hemat!</p>
                     </div>
 
@@ -722,7 +722,7 @@ export default function Page() {
 
       {/* Footer information bar */}
       <footer className="w-full border-t border-zinc-950 bg-black/60 py-6 px-4 mt-12 text-center text-xs font-mono text-zinc-600 relative z-10">
-        <p>© 2026 JedaKuliah Platform. Hak Cipta Dilindungi Undang-Undang.</p>
+        <p>© 2026 Kroket & Grape Yakult Platform. Hak Cipta Dilindungi Undang-Undang.</p>
         <p className="mt-1.5 uppercase text-[10px] text-zinc-700">Dikembangkan untuk ketersediaan kantin mahasiswa berkecepatan tinggi</p>
       </footer>
 

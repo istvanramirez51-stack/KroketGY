@@ -34,28 +34,28 @@ export interface Transaction {
 const INITIAL_MENU_PRESET: MenuItem[] = [
   {
     id: 1,
-    title: 'Kroket',
-    price: 5000,
+    title: 'Kroket Kentang Spesial',
+    price: 6000,
     description: 'Kroket kentang premium dengan isian wortel, ayam cincang gurih, dan bumbu rempah warisan keluarga.',
-    imageUrl: 'https://images.unsplash.com/photo-1541532713592-79a0317b6b77?auto=format&fit=crop&q=80&w=400',
-    tags: ['Terlaris', 'Jajanan', 'Kenyang']
-  },
-  {
-    id: 2,
-    title: 'Risoles Ragout Ayam',
-    price: 5000,
-    description: 'Risoles renyah isi sayur ragout krim ayam manis-gurih yang lumer di mulut.',
-    imageUrl: 'https://images.unsplash.com/photo-1541532713592-79a0317b6b77?auto=format&fit=crop&q=80&w=400',
-    tags: ['Jajanan']
+    imageUrl: '/assets/kroket.png',
+    tags: ['Terlaris', 'Jajanan']
   },
   {
     id: 3,
-    title: 'Nasi Ayam Geprek Jeda',
+    title: 'Paket Lengkap',
     price: 15000,
-    description: 'Nasi hangat dengan ayam goreng krispi yang digeprek sambal korek pedas mantap tingkat dewa.',
-    imageUrl: 'https://images.unsplash.com/photo-1626132647523-66f5bf380027?auto=format&fit=crop&q=80&w=400',
+    description: 'keroket Hangat dan juga kombinasi paket langsung dengan minuman yang biasa nya sering diskon',
+    imageUrl: '/assets/paket.png',
     tags: ['Makanan Utama', 'Pedas']
   },
+  {
+    id: 4,
+    title: 'Grapes & Yakult',
+    price: 8000,
+    description: 'Inovasi rasa ubi ungu dengan susu yakult.',
+    imageUrl: '/assets/ykt.png',
+    tags: ['Spesial', 'Manis']
+  }
 ];
 
 // Initial mock transaction list for historical record demonstration
@@ -72,9 +72,9 @@ const INITIAL_TRANSACTIONS: Transaction[] = [
     total: 18000,
     splitCount: 2,
     splitResult: 9000,
-    customerName: 'William Graham bel',
+    customerName: 'william',
     phone: '081234567890',
-    address: 'Jl. Merdeka No. 12',
+    address: 'jl. merdeka',
     status: 'Sukses'
   },
   {
@@ -89,15 +89,15 @@ const INITIAL_TRANSACTIONS: Transaction[] = [
     total: 20000,
     splitCount: 1,
     splitResult: 20000,
-    customerName: 'Nesa',
+    customerName: 'elsa',
     phone: '089876543210',
-    address: 'Hotel siapadia Lantai 3',
+    address: 'suzuya mall',
     status: 'Sukses'
   }
 ];
 
 // Determine the API base endpoint
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://jedakuliah.freehosting.dev";
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "";
 
 // Safely parse JSON or fallback
 function safeParseJSON(text: string, fallback: any) {

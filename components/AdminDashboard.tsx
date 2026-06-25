@@ -913,7 +913,7 @@ export default function AdminDashboard({
                   {editingVoucher ? 'Sunting Kode Voucher' : 'Rilis Voucher Baru'}
                 </h3>
                 <p className="font-mono text-[9px] font-black uppercase tracking-wider text-zinc-500">
-                  Formulir Modifikasi Database Voucher JedaKuliah
+                  Formulir Modifikasi Database Voucher Keroket & Grape Yakult
                 </p>
               </div>
 
