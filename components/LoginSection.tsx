@@ -7,9 +7,12 @@ import { JedaAPI } from '../lib/api';
 
 interface LoginSectionProps {
   onLoginSuccess: (userData: { username: string; email?: string; role: 'admin' | 'user'; phone?: string }) => void;
+  loggedInUser?: { username: string; email?: string; role: 'admin' | 'user'; phone?: string } | null;
+  onLogout?: () => void;
+  onNavigateToHistory?: () => void;
 }
 
-export default function LoginSection({ onLoginSuccess }: LoginSectionProps) {
+export default function LoginSection({ onLoginSuccess, loggedInUser, onLogout, onNavigateToHistory }: LoginSectionProps) {
   const [activeTab, setActiveTab] = useState<'login' | 'register'>('login');
   
   // Login State
