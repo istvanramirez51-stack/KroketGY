@@ -7,12 +7,17 @@ import { JedaAPI } from '../lib/api';
 
 interface LoginSectionProps {
   onLoginSuccess: (userData: { username: string; email?: string; role: 'admin' | 'user'; phone?: string }) => void;
-  loggedInUser?: { username: string; email?: string; role: 'admin' | 'user'; phone?: string } | null;
-  onLogout?: () => void;
-  onNavigateToHistory?: () => void;
+  loggedInUser: { username: string; email?: string; role: 'admin' | 'user'; phone?: string } | null;
+  onLogout: () => void;
+  onNavigateToHistory: () => void;
 }
 
-export default function LoginSection({ onLoginSuccess, loggedInUser, onLogout, onNavigateToHistory }: LoginSectionProps) {
+export default function LoginSection({ 
+  onLoginSuccess,
+  loggedInUser,
+  onLogout,
+  onNavigateToHistory
+}: LoginSectionProps) {
   const [activeTab, setActiveTab] = useState<'login' | 'register'>('login');
   
   // Login State
@@ -29,6 +34,74 @@ export default function LoginSection({ onLoginSuccess, loggedInUser, onLogout, o
   const [errorMessage, setErrorMessage] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Render profile card if already logged in
+  if (loggedInUser) {
+    return (
+      <div className="min-h-[60vh] flex items-center justify-center px-4 py-8 relative">
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="w-full max-w-md border border-zinc-900 rounded-2xl bg-zinc-950/60 backdrop-blur-xl p-7 md:p-8 shadow-2xl relative"
+        >
+          <div className="absolute top-0 right-8 transform -translate-y-1/2 bg-orange-500/10 text-orange-500 border border-orange-500/20 px-3 py-1 rounded-full flex items-center gap-1.5 text-[9px] font-mono uppercase tracking-widest font-black">
+            <User className="w-3 h-3 text-orange-500" />
+            <span>PROFIL SAYA</span>
+          </div>
+
+          <div className="text-center space-y-2 mb-6">
+            <h2 className="font-display font-black text-2xl uppercase tracking-tight text-white italic">
+              Sesi Aktif Anda
+            </h2>
+            <p className="font-mono text-[10px] text-zinc-550 font-bold uppercase tracking-widest leading-relaxed">
+              Selamat datang kembali di JedaKuliah
+            </p>
+          </div>
+
+          <div className="border border-zinc-900 rounded-xl p-4 bg-zinc-900/30 space-y-3 font-mono text-xs mb-6">
+            <div className="flex justify-between items-center border-b border-zinc-900 pb-2">
+              <span className="text-zinc-500 font-bold uppercase tracking-wider text-[10px]">Nama Pengguna:</span>
+              <span className="text-white font-extrabold">{loggedInUser.username}</span>
+            </div>
+            {loggedInUser.email && (
+              <div className="flex justify-between items-center border-b border-zinc-900 pb-2">
+                <span className="text-zinc-500 font-bold uppercase tracking-wider text-[10px]">Gmail:</span>
+                <span className="text-zinc-355 font-bold">{loggedInUser.email}</span>
+              </div>
+            )}
+            {loggedInUser.phone && (
+              <div className="flex justify-between items-center border-b border-zinc-900 pb-2">
+                <span className="text-zinc-500 font-bold uppercase tracking-wider text-[10px]">WhatsApp:</span>
+                <span className="text-zinc-355 font-bold">{loggedInUser.phone}</span>
+              </div>
+            )}
+            <div className="flex justify-between items-center">
+              <span className="text-zinc-500 font-bold uppercase tracking-wider text-[10px]">Akses Level:</span>
+              <span className={`px-2 py-0.5 rounded text-[10px] uppercase font-black ${loggedInUser.role === 'admin' ? 'bg-cyan-500/15 text-cyan-400 border border-cyan-500/25' : 'bg-orange-500/15 text-orange-400 border border-orange-500/25'}`}>
+                {loggedInUser.role}
+              </span>
+            </div>
+          </div>
+
+          <div className="space-y-3">
+            <button
+              onClick={onNavigateToHistory}
+              className="w-full py-3 bg-orange-500 hover:bg-orange-400 rounded-xl text-black font-semibold text-xs uppercase tracking-wider transition-all duration-200 flex items-center justify-center gap-1.5 cursor-pointer shadow-lg shadow-orange-500/10"
+            >
+              <span>Pantau Status Pesanan Saya</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+            <button
+              onClick={onLogout}
+              className="w-full py-3 bg-zinc-900 hover:bg-red-500/10 border border-zinc-800 hover:border-red-500/20 text-zinc-400 hover:text-red-400 rounded-xl font-semibold text-xs uppercase tracking-wider transition-all duration-200 flex items-center justify-center gap-1.5 cursor-pointer"
+            >
+              <span>Keluar dari Akun</span>
+            </button>
+          </div>
+        </motion.div>
+      </div>
+    );
+  }
 
   // Dynamic Subtitle depending on active tab and role/identifier entered
   const getLoginSubtitle = () => {
