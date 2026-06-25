@@ -10,6 +10,9 @@ import MenuSection from '../components/MenuSection';
 import CartSection from '../components/CartSection';
 import HistorySection from '../components/HistorySection';
 import LoginSection from '../components/LoginSection';
+
+// Prevent Vercel type compilation mismatches/caching issues
+const LoginSectionSafe = LoginSection as any;
 import AdminDashboard from '../components/AdminDashboard';
 import MobileNavigation from '../components/MobileNavigation';
 import AboutUsVoucher, { Voucher } from '../components/AboutUsVoucher';
@@ -47,7 +50,7 @@ const tabContentVariants = {
 // ==========================================
 // KUSTOMISASI LOGO KANTIN JEDAKULIAH (Silakan kustomisasi lewat kodingan ini)
 // ==========================================
-const BRAND_LOGO_URL = '/assets/logo.png';
+const BRAND_LOGO_URL = './public/assets/logo TEP.png';
 
 export default function Page() {
   const [activeTab, setActiveTab] = useState<string>('home');
@@ -64,7 +67,21 @@ export default function Page() {
   const [isLoading, setIsLoading] = useState(true);
   const [isPhpActive, setIsPhpActive] = useState(false);
   const [globalToast, setGlobalToast] = useState('');
-  const shopLogoUrl = BRAND_LOGO_URL;
+  // Auto-normalize logo URL (remove './public', '/public', or 'public/' prefix so Next.js can serve it correctly)
+  const shopLogoUrl = (() => {
+    if (!BRAND_LOGO_URL) return '';
+    let url = BRAND_LOGO_URL.trim();
+    if (url.startsWith('./public/')) {
+      return url.substring(8); // returns '/assets/...'
+    }
+    if (url.startsWith('/public/')) {
+      return url.substring(7); // returns '/assets/...'
+    }
+    if (url.startsWith('public/')) {
+      return '/' + url.substring(7); // returns '/assets/...'
+    }
+    return url;
+  })();
 
   // Setup database connectivity and load lists on startup
   useEffect(() => {
@@ -519,7 +536,7 @@ export default function Page() {
                 animate="animate"
                 exit="exit"
               >
-                <LoginSection
+                <LoginSectionSafe
                   onLoginSuccess={handleLoginSuccess}
                   loggedInUser={loggedInUser}
                   onLogout={handleLogout}
