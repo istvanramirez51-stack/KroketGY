@@ -49,7 +49,7 @@ const tabContentVariants = {
 // ==========================================
 // KUSTOMISASI LOGO KANTIN JEDAKULIAH (Silakan kustomisasi lewat kodingan ini)
 // ==========================================
-const BRAND_LOGO_URL = './public/assets/logo TEP.png';
+const BRAND_LOGO_URL = './public/assets/logo.png';
 
 export default function Page() {
   const [activeTab, setActiveTab] = useState<string>('home');
