@@ -1,4 +1,5 @@
 'use client';
+/* eslint-disable react-hooks/set-state-in-effect */
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
@@ -18,7 +19,7 @@ interface CartSectionProps {
 }
 
 export default function CartSection({
-  cart,
+  cart = [],
   updateQuantity,
   clearCart,
   onCheckoutSuccess,
@@ -33,14 +34,10 @@ export default function CartSection({
   // Automatically pre-fill fields when loggedInUser changes
   useEffect(() => {
     if (loggedInUser) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
       setCustomerName(loggedInUser.username || '');
-      // eslint-disable-next-line react-hooks/set-state-in-effect
       setCustomerPhone(loggedInUser.phone || '');
     } else {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
       setCustomerName('');
-      // eslint-disable-next-line react-hooks/set-state-in-effect
       setCustomerPhone('');
     }
   }, [loggedInUser]);
@@ -56,7 +53,7 @@ export default function CartSection({
   const [voucherSuccess, setVoucherSuccess] = useState('');
 
   // Subtotal calculations
-  const subtotal = cart.reduce((acc, curr) => acc + curr.item.price * curr.quantity, 0);
+  const subtotal = (cart || []).reduce((acc, curr) => acc + (curr?.item?.price || 0) * (curr?.quantity || 0), 0);
   const deliveryFee = subtotal > 0 ? 5000 : 0;
   const discountAmount = appliedVoucher ? appliedVoucher.discount : 0;
   const total = Math.max(0, subtotal + deliveryFee - discountAmount);
@@ -133,7 +130,7 @@ Mohon segera diproses. Terima kasih.`;
     const encodedText = encodeURIComponent(rawText);
     
     // Construct real WhatsApp link. Use general wa.me send protocol.
-    const whatsappLink = `https://wa.me/${customerPhone.replace(/[^0-9]/g, '') || '08123456789'}?text=${encodedText}`;
+    const whatsappLink = `https://wa.me/${customerPhone.replace(/[^0-9]/g, '') || '+628123456789'}?text=${encodedText}`;
 
     // Structure Transaction log
     const itemsLog = cart.map(c => ({
