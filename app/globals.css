@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-sans), system-ui, -apple-system, sans-serif;
+  --font-display: var(--font-display), sans-serif;
+  --font-mono: var(--font-mono), monospace;
+}
+
+/* Custom background pattern from Frosted Glass theme template */
+body {
+  background-color: #0c0c0e;
+  background-image: 
+    radial-gradient(circle at 0% 0%, #3b0764 0%, transparent 40%), 
+    radial-gradient(circle at 100% 100%, #1e1b4b 0%, transparent 40%);
+  background-attachment: fixed;
+  color: #ffffff;
+}
+
+/* Custom global glass & brutalist scrollbars and styles */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(9, 9, 11, 0.9);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(39, 39, 42, 0.8);
+  border: 2px solid rgba(0, 0, 0, 1);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(161, 161, 170, 0.9);
+}
+
+/* Custom continuous glowing animation */
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.15; }
+  50% { opacity: 0.3; }
+}
+
+.animate-pulseGlow {
+  animation: pulseGlow 10s infinite ease-in-out;
+}
+
