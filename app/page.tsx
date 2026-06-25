@@ -535,7 +535,7 @@ export default function Page() {
                 animate="animate"
                 exit="exit"
               >
-                <LoginSectionSafe
+                <LoginSection
                   onLoginSuccess={handleLoginSuccess}
                   loggedInUser={loggedInUser}
                   onLogout={handleLogout}
