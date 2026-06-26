@@ -130,7 +130,7 @@ Mohon segera diproses. Terima kasih.`;
     const encodedText = encodeURIComponent(rawText);
     
     // Construct real WhatsApp link. Use general wa.me send protocol.
-    const whatsappLink = `https://wa.me/${customerPhone.replace(/[^0-9]/g, '') || '+628123456789'}?text=${encodedText}`;
+    const whatsappLink = `https://wa.me/${customerPhone.replace(/[^0-9]/g, '') || '+6283114198515'}?text=${encodedText}`;
 
     // Structure Transaction log
     const itemsLog = cart.map(c => ({
