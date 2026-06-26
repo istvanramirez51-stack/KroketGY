@@ -55,7 +55,7 @@ export default function AboutUsVoucher({ vouchers, onExplore, showNotification }
             </h2>
 
             <p className="text-zinc-400 text-sm leading-relaxed text-justify sm:text-left">
-              <strong>JedaKuliah</strong> didirikan oleh sekelompok mahasiswa tingkat akhir yang bosan mengorbankan waktu istirahat berharga hanya demi mengantre makan siang. Melalui platform kantin terintegrasi, kami mendigitalisasikan jajaran stal kuliner favorit kampus Anda.
+              <strong>Kroket & Grape Yakult</strong> didirikan oleh sekelompok mahasiswa tingkat akhir yang bosan mengorbankan waktu istirahat berharga hanya demi mengantre makan siang. Melalui platform kantin terintegrasi, kami mendigitalisasikan jajaran stal kuliner favorit kampus Anda.
             </p>
             
             <p className="text-zinc-400 text-sm leading-relaxed text-justify sm:text-left">
